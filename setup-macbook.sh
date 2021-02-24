@@ -22,13 +22,13 @@ brew update
 brew upgrade
 
 # install brews
-for BREW in git golang ansible terraform; do
+for BREW in git vim golang ansible terraform packer; do
     printf "\n--- installing ${BREW} ---\n"
     brew install "${BREW}"
 done
 
 # install casks
-for CASK in atom iterm2 docker virtualbox vagrant vagrant-manager slack opera caffeine spotify; do
+for CASK in atom iterm2 docker virtualbox vagrant vagrant-manager slack opera caffeine spotify visual-studio-code; do
     printf "\n--- installing ${CASK} ---\n"
     brew install --cask "${CASK}"
 done
