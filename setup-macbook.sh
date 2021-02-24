@@ -34,6 +34,9 @@ brew install --cask iterm2
 # install oh-my-zsh
 $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# install Go
+brew install golang
+
 # install Docker
 brew install --cask docker
 
