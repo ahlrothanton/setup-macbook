@@ -22,7 +22,7 @@ brew update
 brew upgrade
 
 # install brews
-for BREW in git vim golang ansible terraform packer; do
+for BREW in git vim golang kubectl ansible terraform packer; do
     printf "\n--- installing ${BREW} ---\n"
     brew install "${BREW}"
 done
