@@ -5,6 +5,7 @@
 #
 # TODO:
 #   - no user input required
+#     - at least brew installation requires sudo password and confirmation
 #   - setup zsh(theme, aliases, etc.) automatically - use Ansible?
 
 
@@ -12,23 +13,27 @@ clear
 printf "\n--- starting setup ---\n  ! if any step fails, please verify System Preferences > Security & Privacy > General\n"
 sleep 3
 
-# install Homebrew
-printf "\n--- downloading and installing Homebrew ---\n"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# install Homebrew, when it's not present
+if ! command -v brew &> /dev/null; then
+    printf "\n--- downloading and installing Homebrew ---\n"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 # update and upgrade Homebrew
-printf "\n--- update and upgrade Homebrew ---\n"
+printf "\n--- updating Homebrew ---\n"
 brew update
+
+printf "\n--- upgrading Homebrew packages ---\n"
 brew upgrade
 
 # install brews
-for BREW in git vim golang kubectl ansible terraform packer; do
+for BREW in git vim golang kubectl ansible terraform packer awscli aws-cdk; do
     printf "\n--- installing ${BREW} ---\n"
     brew install "${BREW}"
 done
 
 # install casks
-for CASK in atom iterm2 docker virtualbox vagrant vagrant-manager slack opera caffeine spotify visual-studio-code; do
+for CASK in atom iterm2 docker virtualbox vagrant vagrant-manager slack opera caffeine spotify vscodium aws-vault; do
     printf "\n--- installing ${CASK} ---\n"
     brew install --cask "${CASK}"
 done
