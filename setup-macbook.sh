@@ -27,7 +27,7 @@ printf "\n--- upgrading Homebrew packages ---\n"
 brew upgrade
 
 # install brews
-for BREW in git vim golang kubectl ansible terraform packer awscli aws-cdk; do
+for BREW in git vim golang kubectl helm ansible terraform packer awscli aws-cdk watch; do
     printf "\n--- installing ${BREW} ---\n"
     brew install "${BREW}"
 done
