@@ -13,10 +13,14 @@ clear
 printf "\n--- starting setup ---\n  ! if any step fails, please verify System Preferences > Security & Privacy > General\n"
 sleep 3
 
-# install Homebrew, when it's not present
+# install Homebrew
+printf "\n--- downloading and installing Homebrew ---\n"
+sleep 1
 if ! command -v brew &> /dev/null; then
-    printf "\n--- downloading and installing Homebrew ---\n"
+
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    printf "  - Skipping.. is Homebrew already installed\n"
 fi
 
 # update and upgrade Homebrew
@@ -33,7 +37,7 @@ for BREW in git vim golang kubectl helm ansible terraform packer awscli aws-cdk 
 done
 
 # install casks
-for CASK in atom iterm2 docker virtualbox vagrant vagrant-manager slack opera caffeine spotify vscodium aws-vault; do
+for CASK in atom iterm2 docker virtualbox vagrant vagrant-manager slack opera caffeine spotify vscodium aws-vault vlc; do
     printf "\n--- installing ${CASK} ---\n"
     brew install --cask "${CASK}"
 done
