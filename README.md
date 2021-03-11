@@ -1,9 +1,13 @@
 # setup-macbook
 
-Script to setup Macbook to my liking
+Script for setting up Macbook to my liking.
 
 ## Usage
 
     ./setup-macbook.sh
 
-Run the setup script.
+Install everything.
+
+    ./setup-macbook.sh -r
+
+Same as above, but reboot as well.
